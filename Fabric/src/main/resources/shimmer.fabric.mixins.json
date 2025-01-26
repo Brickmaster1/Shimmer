@@ -21,7 +21,7 @@
     "iris.GlResourceAccessor",
     "iris.HeldItemSupplierMixin",
     "iris.IrisChunkProgramOverridesMixin",
-    "iris.NewWorldRenderingPipelineMixin",
+    "iris.IrisRenderingPipelineMixin",
     "iris.RenderTargetsMixin",
     "iris.ShaderPropertiesMixin",
     "iris.ShaderStorageBufferAccessor",
