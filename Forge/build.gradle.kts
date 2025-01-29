@@ -12,15 +12,9 @@ dependencies {
 }
 
 loom {
-    accessWidenerPath.set(project(":Common").loom.accessWidenerPath)
-
     forge {
-        convertAccessWideners.set(true)
-        extraAccessWideners.add(loom.accessWidenerPath.get().asFile.name)
-
         mixinConfig("$mod_id.mixins.json")
         mixinConfig("$mod_id.forge.mixins.json")
-
     }
 
 }
