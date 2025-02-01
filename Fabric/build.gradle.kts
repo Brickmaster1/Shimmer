@@ -9,6 +9,7 @@ architectury {
 
 loom {
     accessWidenerPath.set(project(":Common").loom.accessWidenerPath)
+    
 }
 
 val common by configurations.creating
