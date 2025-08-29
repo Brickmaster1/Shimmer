@@ -7,9 +7,34 @@ architectury {
     fabric()
 }
 
+repositories {
+    // Flywheel / Create artifacts
+    maven("https://maven.createmod.net") {
+        name = "CreateMaven"
+        content {
+            includeGroup("com.jozufozu.flywheel")
+            includeGroup("com.simibubi.create")
+            includeGroup("com.tterrag.registrate")
+        }
+    }
+    // Fallback for some 0.6.x Flywheel builds
+    maven("https://modmaven.dev") {
+        name = "ModMaven"
+        content { includeGroup("com.jozufozu.flywheel") }
+    }
+
+    // Usual repos for the rest of your deps
+    maven("https://maven.fabricmc.net")       // Fabric Loader/API
+    maven("https://api.modrinth.com/maven")   // Sodium / Iris / ModMenu (modrinth coords)
+    maven("https://maven.shedaniel.me/") {    // Cloth Config
+        content { includeGroup("me.shedaniel") }
+    }
+    maven("https://maven.architectury.dev/")
+    mavenCentral()
+}
+
 loom {
     accessWidenerPath.set(project(":Common").loom.accessWidenerPath)
-    
 }
 
 val common by configurations.creating
@@ -38,18 +63,20 @@ dependencies {
         exclude(group = "net.fabricmc.fabric-api")
     }
 
+    // Iris
     modImplementation("maven.modrinth:iris:1.7.5+1.20.1") {
         exclude(group = "net.fabricmc.fabric-api")
     }
 
+    // Flywheel (Fabric)
     modImplementation("com.jozufozu.flywheel:flywheel-fabric-$minecraft_version:$fabric_flywheel_version")
 
-    implementation("org.anarres:jcpp:1.4.14") {isTransitive = false}// for iris
-    implementation("io.github.douira:glsl-transformer:2.0.0-pre13") // for iris
-    implementation("org.antlr:antlr4-runtime:4.11.1") // for iris
+    // Iris parser deps
+    implementation("org.anarres:jcpp:1.4.14") { isTransitive = false }
+    implementation("io.github.douira:glsl-transformer:2.0.0-pre13")
+    implementation("org.antlr:antlr4-runtime:4.11.1")
 
     modImplementation("maven.modrinth:modmenu:$mod_menu_version")
-
 }
 
 tasks.processResources {
