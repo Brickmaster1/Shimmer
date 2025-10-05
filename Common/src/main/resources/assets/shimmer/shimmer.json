@@ -1,0 +1,66 @@
+{
+  "ColorReference" : {
+      "yellow" : "#22ffC8FF",
+      "red" : {
+        "r": 255,
+        "g": 165,
+        "b": 13,
+        "a": 255
+      }
+  },
+  "LightBlock": [
+    {
+      "block": "minecraft:sea_lantern",
+      "color": "#yellow",
+      "radius": 7
+    },
+    {
+      "block": "minecraft:redstone_lamp",
+      "state": {
+        "lit": true
+      },
+      "color": "#red",
+      "radius": 10
+    },
+		{
+			"block": "minecraft:lantern",
+			"r": 255,
+			"g": 212,
+			"b": 141,
+			"a": 255,
+			"radius": 15
+		}
+  ],
+  "LightItem": [
+    {
+      "item_id" : "minecraft:torch",
+      "r": 255,
+      "g": 253,
+      "b": 85,
+      "a": 255,
+      "radius": 7
+    }
+  ],
+  "Bloom": [
+    {
+      "particle": "minecraft:flame"
+    },
+    {
+      "fluid": "minecraft:lava"
+    },
+    {
+      "block": "minecraft:glowstone"
+    },
+    {
+      "block": "minecraft:redstone_wire"
+    },
+    {
+      "block": "minecraft:redstone_lamp",
+      "state": {
+        "lit": true
+      }
+    }
+  ],
+  "BuildIn" : true,
+  "ConfigSource" : "buildIn settings by shimmer, can be disable by config file"
+}

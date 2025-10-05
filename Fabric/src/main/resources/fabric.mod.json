@@ -1,0 +1,41 @@
+{
+    "schemaVersion": 1,
+    "id": "shimmer",
+    "version": "${versions}",
+
+    "name": "Shimmer",
+    "description": "Shimmer",
+    "authors": [
+      "KilaBash",
+      "HypherionSA",
+      "zomb_676"
+    ],
+    "contact": {
+      "homepage" : "https://github.com/Low-Drag-MC/Shimmer/",
+      "sources": "https://github.com/Low-Drag-MC/Shimmer/",
+      "issues": "https://github.com/Low-Drag-MC/Shimmer/issues/"
+    },
+
+    "license": "MIT",
+    "icon": "assets/shimmer/icon.png",
+
+    "environment": "client",
+    "entrypoints": {
+      "main": [
+				"com.lowdragmc.shimmer.fabric.ShimmerMod"
+      ],
+      "client": [
+				"com.lowdragmc.shimmer.fabric.client.ShimmerModClient"
+      ]
+    },
+    "mixins": [
+      "shimmer.mixins.json",
+      "shimmer.fabric.mixins.json"
+    ],
+    "depends": {
+      "fabricloader": ">=0.14.21",
+      "fabric-api":">=0.83.0+1.20",
+      "minecraft": "1.20.x",
+      "java": ">=17"
+    }
+  }
