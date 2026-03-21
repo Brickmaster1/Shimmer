@@ -63,6 +63,10 @@ subprojects {
                 includeGroup("com.jozufozu.flywheel")
             }
         }
+        maven {
+            name = "ModMaven"
+            url = uri("https://modmaven.dev/")
+        }
     }
 
     dependencies {

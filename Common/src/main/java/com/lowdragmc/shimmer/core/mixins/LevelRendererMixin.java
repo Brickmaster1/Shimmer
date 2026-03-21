@@ -104,7 +104,15 @@ public abstract class LevelRendererMixin {
                     if (left <= blockLightSize) {
                         break;
                     }
-                    shimmerLight.uploadBuffer(buffer);
+                    var level = net.minecraft.client.Minecraft.getInstance().level;
+    org.joml.Vector3d wp = com.lowdragmc.shimmer.comp.vs.VSBridge.shipToWorldIfOnShip(level, shimmerLight.x, shimmerLight.y, shimmerLight.z);
+    if (wp != null) {
+        buffer.put(shimmerLight.r).put(shimmerLight.g).put(shimmerLight.b).put(shimmerLight.a)
+              .put((float) wp.x).put((float) wp.y).put((float) wp.z)
+              .put(shimmerLight.radius);
+    } else {
+        shimmerLight.uploadBuffer(buffer);
+    }
                     blockLightSize++;
                 }
             }

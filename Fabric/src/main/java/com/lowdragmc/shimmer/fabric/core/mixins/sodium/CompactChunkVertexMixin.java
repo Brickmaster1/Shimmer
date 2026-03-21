@@ -11,9 +11,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(value = CompactChunkVertex.class, remap = false)
 public abstract class CompactChunkVertexMixin {
     @Redirect(method = "lambda$getEncoder$0", at = @At(value = "INVOKE", target = "Lme/jellysquid/mods/sodium/client/render/chunk/terrain/material/Material;bits()I"))
-    private static int injectMaterialForBloom(Material material, long ptr, Material material1, ChunkVertexEncoder.Vertex vertex, int i) {
+    private static int injectMaterialForBloom(Material material, long ptr, Material material1, ChunkVertexEncoder.Vertex[] vertices, int i) {
         var origin = material.bits();
-        if ((vertex.light & 0x100) != 0) {
+        // Verificar si hay vértices y si el primer vértice tiene la luz de bloom
+        if (vertices != null && vertices.length > 0 && (vertices[0].light & 0x100) != 0) {
             origin |= (0x01 << 4);
         }
         return origin;

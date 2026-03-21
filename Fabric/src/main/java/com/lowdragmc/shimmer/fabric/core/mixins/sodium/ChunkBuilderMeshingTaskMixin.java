@@ -44,7 +44,8 @@ public abstract class ChunkBuilderMeshingTaskMixin {
     @Redirect(method = "execute(Lme/jellysquid/mods/sodium/client/render/chunk/compile/ChunkBuildContext;Lme/jellysquid/mods/sodium/client/util/task/CancellationToken;)Lme/jellysquid/mods/sodium/client/render/chunk/compile/ChunkBuildOutput;",
             at = @At(value = "INVOKE",
                     target = "Lme/jellysquid/mods/sodium/client/world/WorldSlice;getBlockState(III)Lnet/minecraft/world/level/block/state/BlockState;"),
-            remap = false)
+            remap = false,
+            require = 0) // Cambiar require a 0 para que no falle si no encuentra el método
     private BlockState injectChunkCompileAddLight(WorldSlice slice, int x, int y, int z) {
         var blockState = slice.getBlockState(x, y, z);
         if (!blockState.isAir()) {
